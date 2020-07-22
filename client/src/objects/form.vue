@@ -16,10 +16,17 @@
 
 <script>
 import OButton from './button';
+import axios from 'axios';
 
 export default {
   name: 'o-form',
   components: { OButton },
+  mounted() {
+    // axios.post('http://localhost:5000/posts', {
+    //   english: 'House',
+    //   german: 'Haus'
+    // });
+  },
   methods: {
     sumbitForm() {
       console.log('submit');
