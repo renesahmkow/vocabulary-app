@@ -1,13 +1,22 @@
 <template>
-  <section class="c-createPage">Create Page</section>
+  <section class="c-createPage">
+    <OForm></OForm>
+  </section>
 </template>
 
 <script>
+import OForm from '../objects/form';
+
 export default {
-  name: "CreatePage",
-  components: {}
+  name: 'CreatePage',
+  components: { OForm }
 };
 </script>
 
-<style>
+<style lang="scss">
+.c-createPage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
 </style>
