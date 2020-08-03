@@ -1,11 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav" class="o-navigation">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/learning">Learning</router-link>|
-      <router-link to="/create">Create</router-link>|
-      <router-link to="/overview">Overview</router-link>
-    </div>
+    <CNavigation></CNavigation>
     <section class="container">
       <router-view />
     </section>
@@ -13,26 +8,11 @@
 </template>
 
 <script>
-import CNavigation from "";
+import CNavigation from './components/navigation';
 
 export default {
-  name: "o-form",
-  components: { CNavigation },
-  mounted() {},
-  methods: {
-    async sumbitForm() {
-      const englishInput = document.querySelector("#inputEnglish");
-      const germanInput = document.querySelector("#inputGerman");
-
-      await axios.post("http://localhost:5000/posts", {
-        english: englishInput.value,
-        german: germanInput.value
-      });
-
-      englishInput.value = " ";
-      germanInput.value = " ";
-    }
-  }
+  name: 'app',
+  components: { CNavigation }
 };
 </script>
 
