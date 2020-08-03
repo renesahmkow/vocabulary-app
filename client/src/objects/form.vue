@@ -2,11 +2,11 @@
   <section>
     <form class="o-form" v-on:submit.prevent="sumbitForm">
       <label>
-        <input type="text" class="o-form__input" />
+        <input type="text" class="o-form__input" id="inputEnglish" />
         Englisch
       </label>
       <label>
-        <input type="text" class="o-form__input" />
+        <input type="text" class="o-form__input" id="inputGerman" />
         Deutsch
       </label>
       <OButton type="submit"></OButton>
@@ -15,21 +15,27 @@
 </template>
 
 <script>
-import OButton from './button';
-// import axios from 'axios';
+import OButton from "./button";
+import axios from "axios";
 
 export default {
-  name: 'o-form',
+  name: "o-form",
   components: { OButton },
-  mounted() {
-    // axios.post('http://localhost:5000/posts', {
-    //   english: 'House',
-    //   german: 'Haus'
-    // });
-  },
+  mounted() {},
   methods: {
     sumbitForm() {
-      console.log('submit');
+      const englishInput = document.querySelector("#inputEnglish");
+      const germanInput = document.querySelector("#inputGerman");
+
+      axios
+        .post("http://localhost:5000/posts", {
+          english: englishInput.value,
+          german: germanInput.value
+        })
+        .then(() => {
+          englishInput.value = "";
+          germanInput.value = "";
+        });
     }
   }
 };

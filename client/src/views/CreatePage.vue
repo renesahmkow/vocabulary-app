@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import OForm from '../objects/form';
+import OForm from "../objects/form";
 
 export default {
-  name: 'CreatePage',
+  name: "CreatePage",
   components: { OForm }
 };
 </script>
