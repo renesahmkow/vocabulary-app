@@ -1,13 +1,19 @@
 <template>
   <section id="nav" class="c-navigation">
-    <div
-      class="c-navigation__burgermenu"
-      :class="{ isActive: menuIsActive }"
-      @click="toggelBurgerMenu"
-    >
-      <div class="menuBar menuBar--half menuBar--top"></div>
-      <div class="menuBar"></div>
-      <div class="menuBar menuBar--half menuBar--bottom"></div>
+    <div class="c-navigation__menu">
+      <div
+        class="c-navigation__burgermenu"
+        :class="{ isActive: menuIsActive }"
+        @click="toggelBurgerMenu"
+      >
+        <div class="menuBar menuBar--half menuBar--top"></div>
+        <div class="menuBar"></div>
+        <div class="menuBar menuBar--half menuBar--bottom"></div>
+      </div>
+
+      <h2 v-if="menuIsActive" class="c-navigation__menu__headline">
+        Was möchtest du machen ?
+      </h2>
     </div>
 
     <!-- <router-link class="c-navigation__link" to="/">Home</router-link>|
@@ -45,6 +51,15 @@ export default {
   top: 0;
 
   &__link {
+  }
+
+  &__menu {
+    display: flex;
+
+    &__headline {
+      margin-left: 16px;
+      align-self: center;
+    }
   }
 
   &__burgermenu {
