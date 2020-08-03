@@ -6,17 +6,25 @@
       <router-link to="/create">Create</router-link>|
       <router-link to="/overview">Overview</router-link>
     </div>
-    <router-view />
+    <section class="container">
+      <router-view />
+    </section>
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@import "./scss/_resets.scss";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+body {
+  margin: 0;
 }
 
 #nav {
@@ -31,5 +39,10 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
 }
 </style>
