@@ -41,6 +41,8 @@ export default {
 .c-navigation {
   width: 100%;
   padding: 16px;
+  position: fixed;
+  top: 0;
 
   &__link {
   }
@@ -54,6 +56,7 @@ export default {
 
     &.isActive {
       .menuBar {
+        transform: rotate(360deg);
         &--half {
           width: 100%;
         }

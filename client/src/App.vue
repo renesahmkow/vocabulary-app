@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <CNavigation></CNavigation>
     <section class="container">
+      <CNavigation></CNavigation>
       <router-view />
     </section>
   </div>
@@ -118,6 +118,7 @@ body,
 }
 
 .container {
+  position: relative;
   height: 100vh;
   width: 100%;
 }
