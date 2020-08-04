@@ -1,42 +1,42 @@
 <template>
   <div id="app">
-    <div id="nav" class="o-navigation">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/learning">Learning</router-link>|
-      <router-link to="/create">Create</router-link>|
-      <router-link to="/overview">Overview</router-link>
-    </div>
-    <section class="container">
+    <CNavigation />
+    <div class="content" :class="{ open: showNav }">
+      <div id="navigation-icon" v-if="mobileView" @click="toggleNavigation">
+        <i class="fas fa-bars"></i>
+      </div>
       <router-view />
-    </section>
+    </div>
   </div>
 </template>
 
 <script>
-import CNavigation from "";
+import CNavigation from './components/navigation/navigation';
+import { mapActions, mapState } from 'vuex';
 
 export default {
-  name: "o-form",
+  name: 'app',
   components: { CNavigation },
-  mounted() {},
+  data: () => {
+    return {
+      mobileView: true
+    };
+  },
+  computed: mapState({
+    showNav: (state) => state.navigation.show
+  }),
   methods: {
-    async sumbitForm() {
-      const englishInput = document.querySelector("#inputEnglish");
-      const germanInput = document.querySelector("#inputGerman");
-
-      await axios.post("http://localhost:5000/posts", {
-        english: englishInput.value,
-        german: germanInput.value
-      });
-
-      englishInput.value = " ";
-      germanInput.value = " ";
+    ...mapActions(['toggleNav']),
+    toggleNavigation() {
+      this.toggleNav(!this.showNav);
     }
   }
 };
 </script>
 
 <style lang="scss">
+@import url('https://use.fontawesome.com/releases/v5.9.0/css/all.css');
+
 html,
 * {
   &,
@@ -49,11 +49,19 @@ html,
   }
 }
 
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma;
+  background-color: #7ca971;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-body,
 h1,
 h2,
 h3,
@@ -130,15 +138,48 @@ select:-webkit-autofill:focus {
   -webkit-border-radius: 6px;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 html,
-body,
 #app {
   min-height: 100%;
   user-select: none;
 }
 
-.container {
-  height: 100vh;
+#app {
+  position: relative;
   width: 100%;
+  height: calc(100vh - 20px);
+  padding: 10px;
+  color: #333;
+  overflow: hidden;
+}
+
+.content {
+  position: absolute;
+  top: 10px;
+  width: calc(100% - 20px);
+  height: calc(100vh - 20px);
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: 1s transform cubic-bezier(0, 0.12, 0.14, 1);
+}
+
+#navigation-icon {
+  padding: 10px 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  i {
+    font-size: 24px;
+  }
+}
+
+.open {
+  transform: translateX(200px);
 }
 </style>
