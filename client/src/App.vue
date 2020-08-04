@@ -2,7 +2,7 @@
   <div id="app">
     <CNavigation />
     <div class="content" :class="{ open: showNav }">
-      <div id="navigation-icon" v-if="mobileView" @click="showNav = !showNav">
+      <div id="navigation-icon" v-if="mobileView" @click="toggleNavigation">
         <i class="fas fa-bars"></i>
       </div>
       <router-view />
@@ -12,15 +12,24 @@
 
 <script>
 import CNavigation from './components/navigation/navigation';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'app',
   components: { CNavigation },
   data: () => {
     return {
-      mobileView: true,
-      showNav: false
+      mobileView: true
     };
+  },
+  computed: mapState({
+    showNav: (state) => state.navigation.show
+  }),
+  methods: {
+    ...mapActions(['toggleNav']),
+    toggleNavigation() {
+      this.toggleNav(!this.showNav);
+    }
   }
 };
 </script>

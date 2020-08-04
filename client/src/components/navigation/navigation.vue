@@ -6,16 +6,28 @@
       </h2>
     </div>
     <div class="c-navigation__linkList">
-      <router-link class="c-navigation__linkList__item" to="/"
+      <router-link
+        @click.native="toggleNavigation"
+        class="c-navigation__linkList__item"
+        to="/"
         >Home</router-link
       >
-      <router-link class="c-navigation__linkList__item" to="/learning"
+      <router-link
+        @click.native="toggleNavigation"
+        class="c-navigation__linkList__item"
+        to="/learning"
         >Learning</router-link
       >
-      <router-link class="c-navigation__linkList__item" to="/create"
+      <router-link
+        @click.native="toggleNavigation"
+        class="c-navigation__linkList__item"
+        to="/create"
         >Create</router-link
       >
-      <router-link class="c-navigation__linkList__item" to="/overview"
+      <router-link
+        @click.native="toggleNavigation"
+        class="c-navigation__linkList__item"
+        to="/overview"
         >Overview</router-link
       >
     </div>
@@ -23,17 +35,20 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
+
 export default {
   name: 'o-navigation',
   data() {
-    return {
-      menuIsActive: false
-    };
+    return {};
   },
-  mounted() {},
+  computed: mapState({
+    showNav: (state) => state.navigation.show
+  }),
   methods: {
-    toggelBurgerMenu: function() {
-      this.menuIsActive = !this.menuIsActive;
+    ...mapActions(['toggleNav']),
+    toggleNavigation() {
+      this.toggleNav(!this.showNav);
     }
   }
 };
