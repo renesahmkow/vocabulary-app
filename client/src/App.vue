@@ -1,22 +1,33 @@
 <template>
   <div id="app">
-    <section class="container">
-      <CNavigation></CNavigation>
+    <CNavigation />
+    <div class="content" :class="{ open: showNav }">
+      <div id="navigation-icon" v-if="mobileView" @click="showNav = !showNav">
+        <i class="fas fa-bars"></i>
+      </div>
       <router-view />
-    </section>
+    </div>
   </div>
 </template>
 
 <script>
-import CNavigation from './components/navigation';
+import CNavigation from './components/navigation/navigation';
 
 export default {
   name: 'app',
-  components: { CNavigation }
+  components: { CNavigation },
+  data: () => {
+    return {
+      mobileView: true,
+      showNav: false
+    };
+  }
 };
 </script>
 
 <style lang="scss">
+@import url('https://use.fontawesome.com/releases/v5.9.0/css/all.css');
+
 html,
 * {
   &,
@@ -29,11 +40,19 @@ html,
   }
 }
 
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma;
+  background-color: #7ca971;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-body,
 h1,
 h2,
 h3,
@@ -110,16 +129,48 @@ select:-webkit-autofill:focus {
   -webkit-border-radius: 6px;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 html,
-body,
 #app {
   min-height: 100%;
   user-select: none;
 }
 
-.container {
+#app {
   position: relative;
-  height: 100vh;
   width: 100%;
+  height: calc(100vh - 20px);
+  padding: 10px;
+  color: #333;
+  overflow: hidden;
+}
+
+.content {
+  position: absolute;
+  top: 10px;
+  width: calc(100% - 20px);
+  height: calc(100vh - 20px);
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: 1s transform cubic-bezier(0, 0.12, 0.14, 1);
+}
+
+#navigation-icon {
+  padding: 10px 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  i {
+    font-size: 24px;
+  }
+}
+
+.open {
+  transform: translateX(200px);
 }
 </style>

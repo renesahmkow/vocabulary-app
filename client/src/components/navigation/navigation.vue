@@ -1,28 +1,24 @@
 <template>
   <section id="nav" class="c-navigation">
     <div class="c-navigation__menu">
-      <div
-        class="c-navigation__burgermenu"
-        :class="{ isActive: menuIsActive }"
-        @click="toggelBurgerMenu"
-      >
-        <div class="menuBar menuBar--half menuBar--top"></div>
-        <div class="menuBar"></div>
-        <div class="menuBar menuBar--half menuBar--bottom"></div>
-      </div>
-
-      <h2 v-if="menuIsActive" class="c-navigation__menu__headline">
-        Was möchtest du machen ?
+      <h2 class="c-navigation__menu__headline">
+        Menü
       </h2>
     </div>
-
-    <!-- <router-link class="c-navigation__link" to="/">Home</router-link>|
-    <router-link class="c-navigation__link" to="/learning">Learning</router-link
-    >|
-    <router-link class="c-navigation__link" to="/create">Create</router-link>|
-    <router-link class="c-navigation__link" to="/overview"
-      >Overview</router-link
-    > -->
+    <div class="c-navigation__linkList">
+      <router-link class="c-navigation__linkList__item" to="/"
+        >Home</router-link
+      >
+      <router-link class="c-navigation__linkList__item" to="/learning"
+        >Learning</router-link
+      >
+      <router-link class="c-navigation__linkList__item" to="/create"
+        >Create</router-link
+      >
+      <router-link class="c-navigation__linkList__item" to="/overview"
+        >Overview</router-link
+      >
+    </div>
   </section>
 </template>
 
@@ -45,19 +41,36 @@ export default {
 
 <style lang="scss">
 .c-navigation {
-  width: 100%;
+  width: 200px;
+  height: calc(100vh - 20px);
   padding: 16px;
   position: fixed;
   top: 0;
+  display: flex;
+  flex-direction: column;
 
-  &__link {
+  &__linkList {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+    border-top: 2px solid white;
+    padding-top: 32px;
+
+    &__item {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 32px;
+    }
   }
 
   &__menu {
     display: flex;
+    margin-bottom: 32px;
+    color: white;
 
     &__headline {
-      margin-left: 16px;
       align-self: center;
     }
   }
