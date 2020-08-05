@@ -15,8 +15,6 @@ export default {
 
 <style lang="scss">
 .c-createPage {
-  margin-top: 56px;
-  height: 100vh;
   display: flex;
   justify-content: center;
 }
