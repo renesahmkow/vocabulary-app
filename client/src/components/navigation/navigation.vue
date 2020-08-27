@@ -1,52 +1,42 @@
 <template>
   <section id="nav" class="c-navigation">
     <div class="c-navigation__menu">
-      <h2 class="c-navigation__menu__headline">
-        Menü
-      </h2>
+      <h2 class="c-navigation__menu__headline">Menü</h2>
     </div>
     <div class="c-navigation__linkList">
-      <router-link
-        @click.native="toggleNavigation"
-        class="c-navigation__linkList__item"
-        to="/"
-        >Home</router-link
-      >
+      <router-link @click.native="toggleNavigation" class="c-navigation__linkList__item" to="/">Home</router-link>
       <router-link
         @click.native="toggleNavigation"
         class="c-navigation__linkList__item"
         to="/learning"
-        >Learning</router-link
-      >
+      >Learning</router-link>
       <router-link
         @click.native="toggleNavigation"
         class="c-navigation__linkList__item"
         to="/create"
-        >Create</router-link
-      >
+      >Create</router-link>
       <router-link
         @click.native="toggleNavigation"
         class="c-navigation__linkList__item"
         to="/overview"
-        >Overview</router-link
-      >
+      >Overview</router-link>
     </div>
   </section>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState } from "vuex";
 
 export default {
-  name: 'o-navigation',
+  name: "o-navigation",
   data() {
     return {};
   },
   computed: mapState({
-    showNav: (state) => state.navigation.show
+    showNav: state => state.navigation.show
   }),
   methods: {
-    ...mapActions(['toggleNav']),
+    ...mapActions(["toggleNav"]),
     toggleNavigation() {
       this.toggleNav(!this.showNav);
     }
@@ -74,7 +64,7 @@ export default {
     padding-top: 32px;
 
     &__item {
-      color: white;
+      color: $color-light;
       font-size: 24px;
       margin-bottom: 32px;
     }
@@ -83,7 +73,7 @@ export default {
   &__menu {
     display: flex;
     margin-bottom: 32px;
-    color: white;
+    color: $color-light;
 
     &__headline {
       align-self: center;
@@ -125,7 +115,7 @@ export default {
   width: 100%;
   height: 3px;
   border-radius: 16px;
-  background-color: black;
+  background-color: $color-orange;
   margin-bottom: 2px;
   transition: all 0.3s ease-in-out;
   position: relative;

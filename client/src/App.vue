@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import CNavigation from './components/navigation/navigation';
-import { mapActions, mapState } from 'vuex';
+import CNavigation from "./components/navigation/navigation";
+import { mapActions, mapState } from "vuex";
 
 export default {
-  name: 'app',
+  name: "app",
   components: { CNavigation },
   data: () => {
     return {
@@ -23,10 +23,10 @@ export default {
     };
   },
   computed: mapState({
-    showNav: (state) => state.navigation.show
+    showNav: state => state.navigation.show
   }),
   methods: {
-    ...mapActions(['toggleNav']),
+    ...mapActions(["toggleNav"]),
     toggleNavigation() {
       this.toggleNav(!this.showNav);
     }
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://use.fontawesome.com/releases/v5.9.0/css/all.css');
+@import url("https://use.fontawesome.com/releases/v5.9.0/css/all.css");
 
 html,
 * {
@@ -54,8 +54,8 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma;
-  background-color: #7ca971;
+  font-family: "Segoe UI", Tahoma;
+  background-color: $color-blue;
 }
 
 html {
@@ -143,6 +143,11 @@ a {
   color: black;
 }
 
+button {
+  border: none;
+  background: none;
+}
+
 html,
 #app {
   min-height: 100%;
@@ -164,7 +169,7 @@ html,
   width: calc(100% - 20px);
   height: calc(100vh - 20px);
   padding: 20px;
-  background-color: #fff;
+  background-color: $color-light;
   border-radius: 24px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   transition: 1s transform cubic-bezier(0, 0.12, 0.14, 1);

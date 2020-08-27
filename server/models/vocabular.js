@@ -8,6 +8,9 @@ const vocabularSchema = new mongoose.Schema({
   german: {
     type: String,
     require: true
+  },
+  text: {
+    type: String
   }
 });
 
