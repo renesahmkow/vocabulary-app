@@ -2,16 +2,14 @@
   <section>
     <div v-if="loading">Loading Animation</div>
     <div v-else class="homepage">
-      <router-link class="homepage__startbutton" to="/learning">
-        Lernen beginnen !
-      </router-link>
+      <router-link class="homepage__startbutton" to="/learning">Lernen beginnen !</router-link>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: "Home",
   components: {},
   data() {
     return {
@@ -22,7 +20,7 @@ export default {
   async created() {
     this.loading = true;
 
-    await this.$store.dispatch('getData');
+    await this.$store.dispatch("getData");
 
     this.loading = false;
   },
@@ -39,9 +37,9 @@ export default {
     width: 100%;
     height: 300px;
     padding: 8px;
-    background-color: lightblue;
+    background-color: $color-lightblue;
     background-blend-mode: multiply;
-    background-image: url('../assets/learn.png');
+    background-image: url("../assets/learn.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -52,7 +50,7 @@ export default {
     align-items: flex-end;
 
     font-size: 36px;
-    color: white;
+    color: $color-light;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   }
 }
