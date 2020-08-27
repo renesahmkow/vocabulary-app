@@ -31,15 +31,18 @@ export default {
     sumbitForm() {
       const englishInput = document.querySelector("#inputEnglish");
       const germanInput = document.querySelector("#inputGerman");
+      const exampleInput = document.querySelector("#inputExampleText");
 
       axios
         .post("http://localhost:5000/posts", {
           english: englishInput.value,
-          german: germanInput.value
+          german: germanInput.value,
+          text: exampleInput.value
         })
         .then(() => {
           englishInput.value = "";
           germanInput.value = "";
+          exampleInput.value = "";
         });
     }
   }

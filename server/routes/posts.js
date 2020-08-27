@@ -15,7 +15,8 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const post = new Post({
     english: req.body.english,
-    german: req.body.german
+    german: req.body.german,
+    text: req.body.text
   });
 
   try {
