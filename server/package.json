@@ -1,5 +1,5 @@
 {
-  "name": "vocabulary-server",
+  "name": "vocabulina-server-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

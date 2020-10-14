@@ -33,6 +33,7 @@ export default {
 .homepage {
   width: 100%;
   height: 100vh;
+  
   &__startbutton {
     width: 100%;
     height: 300px;

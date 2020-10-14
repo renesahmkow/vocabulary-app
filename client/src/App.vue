@@ -157,17 +157,16 @@ html,
 #app {
   position: relative;
   width: 100%;
-  height: calc(100vh - 20px);
+  height: 100%;
   padding: 10px;
   color: #333;
   overflow: hidden;
 }
 
 .content {
-  position: absolute;
-  top: 10px;
-  width: calc(100% - 20px);
-  height: calc(100vh - 20px);
+  position: relative;
+  width: 100%;
+  height: 100%;
   padding: 20px;
   background-color: $color-light;
   border-radius: 24px;
