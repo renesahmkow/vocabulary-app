@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "o-button",
+  name: 'o-button',
   props: {
     submit: {
       type: Boolean
@@ -19,5 +19,6 @@ export default {
   min-height: 48px;
   border-radius: 16px;
   background-color: $color-yellow;
+  max-height: 50px;
 }
 </style>
