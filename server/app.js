@@ -11,9 +11,10 @@ const PORT = process.env.PORT || 5000;
 // cors
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://vocabulina.herokuapp.com/'
+  res.header('Access-Control-Allow-Origin', 'https://vocabulina.netlify.app/');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, OPTIONS, PUT, PATCH, DELETE'
   );
   res.header(
     'Access-Control-Allow-Headers',
