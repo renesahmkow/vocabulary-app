@@ -23,7 +23,7 @@ export default new Vuex.Store({
   },
   actions: {
     async getData({ commit }) {
-      const data = await axios.get('http://localhost:5000/posts');
+      const data = await axios.get('https://vocabulina.herokuapp.com/');
 
       commit('setVocabularysList', data.data);
     },
